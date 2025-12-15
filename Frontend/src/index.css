@@ -1,0 +1,293 @@
+@import "tailwindcss";
+
+@theme {
+  --color-light-bg: #FAFAFA;
+  --color-dark-bg: #050505;
+  --color-dark-surface: #0F0F13;
+  --color-dark-elevated: #18181E;
+  --color-dark-border: rgba(255, 255, 255, 0.08);
+
+  --color-neon-purple: #B026FF;
+  --color-neon-pink: #FF10F0;
+  --color-neon-blue: #00D9FF;
+  --color-neon-green: #10B981;
+}
+
+/* =====================================================
+   CSS VARIABLES – THEME + LAYOUT
+===================================================== */
+:root {
+  /* ---------- Layout ---------- */
+  --navbar-height: 88px;
+
+  /* ---------- Light Mode ---------- */
+  --bg-primary: #FAFAFA;
+  --bg-secondary: #FFFFFF;
+  --bg-elevated: #F5F5F5;
+
+  --text-primary: #1A1A1A;
+  --text-secondary: #4B5563;
+  --text-tertiary: #9CA3AF;
+
+  --border-color: #E5E5E5;
+
+  /* ---------- Chat Theme (Light) ---------- */
+  --chat-bg: #F9FAFB;
+  --chat-surface: #FFFFFF;
+  --chat-input-bg: #F3F4F6;
+
+  --msg-sent-bg: #2563EB;
+  --msg-sent-text: #FFFFFF;
+  --msg-received-bg: #E5E7EB;
+  --msg-received-text: #111827;
+
+  --chat-text-primary: #111827;
+  --chat-text-secondary: #6B7280;
+  --chat-text-muted: #9CA3AF;
+
+  --chat-border: #E5E7EB;
+  --chat-divider: #D1D5DB;
+
+  --status-online: #10B981;
+  --status-typing: #2563EB;
+  --status-unread: #EF4444;
+
+  --accent-primary: #B026FF;
+  --accent-secondary: #FF10F0;
+  --accent-tertiary: #00D9FF;
+}
+
+.dark {
+  /* ---------- Dark Mode ---------- */
+  --bg-primary: #050505;
+  --bg-secondary: #0F0F13;
+  --bg-elevated: #18181E;
+
+  --text-primary: #FFFFFF;
+  --text-secondary: #D1D5DB;
+  --text-tertiary: #9CA3AF;
+
+  --border-color: rgba(255, 255, 255, 0.08);
+
+  /* ---------- Chat Theme (Dark) ---------- */
+  --chat-bg: #0F172A;
+  --chat-surface: #020617;
+  --chat-input-bg: #020617;
+
+  --msg-sent-bg: #2563EB;
+  --msg-sent-text: #FFFFFF;
+  --msg-received-bg: #1E293B;
+  --msg-received-text: #E5E7EB;
+
+  --chat-text-primary: #E5E7EB;
+  --chat-text-secondary: #94A3B8;
+  --chat-text-muted: #64748B;
+
+  --chat-border: #1E293B;
+  --chat-divider: #334155;
+
+  --status-online: #22C55E;
+  --status-typing: #38BDF8;
+  --status-unread: #F87171;
+
+  --accent-primary: #9D00FF;
+  --accent-secondary: #FF00E6;
+  --accent-tertiary: #00E1FF;
+}
+
+/* =====================================================
+   GLOBAL RESET
+===================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--navbar-height);
+  /* 🔥 anchor offset fix */
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* =====================================================
+   COMPONENT UTILITIES
+===================================================== */
+
+@layer components {
+
+  /* Card Component */
+  .card {
+    @apply bg-white dark:bg-dark-elevated rounded-2xl p-6 shadow-sm border border-gray-100 dark:border-white/5 backdrop-blur-sm transition-all duration-300;
+  }
+
+  /* Input Fields */
+  .input-field {
+    @apply w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-dark-surface border border-gray-200 dark:border-gray-700 outline-none focus:ring-2 focus:ring-neon-purple/50 focus:border-transparent transition-all duration-200 text-gray-900 dark:text-gray-100 placeholder-gray-400;
+  }
+
+  /* Primary Button */
+  .btn-primary {
+    @apply px-6 py-3 rounded-xl bg-gradient-to-r from-neon-purple to-neon-pink text-white font-semibold shadow-lg shadow-neon-purple/20 hover:shadow-neon-purple/40 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  /* Gradient Text */
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-neon-purple to-neon-pink font-bold;
+  }
+}
+
+/* =====================================================
+   FIXED NAVBAR OFFSET UTILITIES
+===================================================== */
+
+/* Use this on FIRST section only (Hero) */
+.nav-offset {
+  margin-top: var(--navbar-height);
+}
+
+/* Optional: for sections that must never touch navbar */
+.section-safe {
+  padding-top: clamp(6rem, 10vw, 10rem);
+  padding-bottom: clamp(6rem, 10vw, 12rem);
+}
+
+/* =====================================================
+   SCROLLBAR
+===================================================== */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-tertiary);
+}
+
+/* =====================================================
+   ANIMATIONS
+===================================================== */
+@keyframes gradient-flow {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-20px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* -------- Scan -------- */
+@keyframes scan {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.mask-image-scan {
+  mask-image: linear-gradient(to right, transparent, black, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black, transparent);
+  animation: scan 3s linear infinite;
+  animation-play-state: paused;
+}
+
+.group:hover .mask-image-scan {
+  animation-play-state: running;
+}
+
+/* -------- Waves -------- */
+@keyframes wave-slow {
+  0% {
+    transform: translateX(0);
+  }
+
+  50% {
+    transform: translateX(-25%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.animate-wave-slow {
+  animation: wave-slow 20s ease-in-out infinite;
+}
+
+/* -------- Gradient X -------- */
+@keyframes gradient-x {
+
+  0%,
+  100% {
+    background-size: 200% 200%;
+    background-position: left center;
+  }
+
+  50% {
+    background-size: 200% 200%;
+    background-position: right center;
+  }
+}
+
+.animate-gradient-x {
+  animation: gradient-x 15s ease infinite;
+}
+
+/* =====================================================
+   MOBILE UTILITIES
+===================================================== */
+@media (max-width: 768px) {
+  .mobile-hidden {
+    display: none;
+  }
+
+  :root {
+    --navbar-height: 76px;
+    /* smaller navbar on mobile */
+  }
+}
