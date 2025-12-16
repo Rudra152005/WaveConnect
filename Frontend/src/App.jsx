@@ -9,6 +9,9 @@ import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import ChatPage from './pages/ChatPage';
 import SettingsPage from './pages/SettingsPage';
+import SecurityPage from './pages/SecurityPage';
+import PricingPage from './pages/PricingPage';
+import AboutPage from './pages/AboutPage';
 
 // Protected Route Component
 const ProtectedRoute = ({ children }) => {
@@ -29,6 +32,9 @@ function App() {
         <Routes>
           {/* Public Routes */}
           <Route path="/" element={<LandingPage />} />
+          <Route path="/security" element={<SecurityPage />} />
+          <Route path="/pricing" element={<PricingPage />} />
+          <Route path="/about" element={<AboutPage />} />
           <Route
             path="/login"
             element={

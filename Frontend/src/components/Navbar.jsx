@@ -19,8 +19,6 @@ const Navbar = () => {
     document.documentElement.classList.toggle("dark");
   };
 
-  const navLinks = ["Features", "Security", "Pricing", "About"];
-
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300
@@ -38,15 +36,30 @@ const Navbar = () => {
 
         {/* Desktop Links */}
         <div className="hidden md:flex items-center gap-10">
-          {navLinks.map((item) => (
-            <a
-              key={item}
-              href={`#${item.toLowerCase()}`}
-              className="text-gray-300 hover:text-white transition"
-            >
-              {item}
-            </a>
-          ))}
+          <a
+            href="#features"
+            className="text-gray-300 hover:text-white transition"
+          >
+            Features
+          </a>
+          <Link
+            to="/security"
+            className="text-gray-300 hover:text-white transition"
+          >
+            Security
+          </Link>
+          <Link
+            to="/pricing"
+            className="text-gray-300 hover:text-white transition"
+          >
+            Pricing
+          </Link>
+          <Link
+            to="/about"
+            className="text-gray-300 hover:text-white transition"
+          >
+            About
+          </Link>
         </div>
 
         {/* Actions */}
@@ -79,16 +92,34 @@ const Navbar = () => {
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
         <div className="md:hidden bg-black/90 backdrop-blur-xl px-8 py-6 space-y-4">
-          {navLinks.map((item) => (
-            <a
-              key={item}
-              href={`#${item.toLowerCase()}`}
-              className="block text-lg text-gray-300 hover:text-white"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              {item}
-            </a>
-          ))}
+          <a
+            href="#features"
+            className="block text-lg text-gray-300 hover:text-white"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            Features
+          </a>
+          <Link
+            to="/security"
+            className="block text-lg text-gray-300 hover:text-white"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            Security
+          </Link>
+          <Link
+            to="/pricing"
+            className="block text-lg text-gray-300 hover:text-white"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            Pricing
+          </Link>
+          <Link
+            to="/about"
+            className="block text-lg text-gray-300 hover:text-white"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            About
+          </Link>
         </div>
       )}
     </nav>

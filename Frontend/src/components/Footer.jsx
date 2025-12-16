@@ -1,17 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { 
-  Github, 
-  Twitter, 
-  Linkedin, 
-  Mail, 
-  Heart 
+import {
+  Github,
+  Linkedin,
+  Mail,
+  Heart
 } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="relative pt-10 pb-8 px-4 sm:px-6 lg:px-8">
-      <div 
+    <footer className="relative pt-24 pb-20 px-4 sm:px-6 lg:px-8">
+      <div
         className="
           max-w-[1600px] 
           mx-auto 
@@ -35,13 +34,13 @@ const Footer = () => {
               Wave<span className="text-purple-500">Connect</span>
             </Link>
             <p className="text-gray-400 text-sm leading-relaxed max-w-sm">
-              The next generation of messaging. Connect with speed, style, and total security. 
+              The next generation of messaging. Connect with speed, style, and total security.
               Join the wave today.
             </p>
             <div className="flex items-center gap-4">
-              <SocialLink href="#" icon={Github} />
-              <SocialLink href="#" icon={Twitter} />
-              <SocialLink href="#" icon={Linkedin} />
+              <SocialLink href="https://github.com/Rudra152005" icon={Github} />
+              <SocialLink href="https://x.com/home" icon={XIcon} />
+              <SocialLink href="https://www.linkedin.com/in/rudra-tiwari05/" icon={Linkedin} />
             </div>
           </div>
 
@@ -75,8 +74,8 @@ const Footer = () => {
               <FooterLink to="/careers">Careers</FooterLink>
               <FooterLink to="/legal">Legal</FooterLink>
               <div className="pt-4">
-                <a 
-                  href="mailto:hello@waveconnect.com" 
+                <a
+                  href="mailto:hello@waveconnect.com"
                   className="inline-flex items-center gap-2 text-purple-400 hover:text-purple-300 transition-colors text-sm font-medium"
                 >
                   <Mail className="w-4 h-4" />
@@ -102,9 +101,22 @@ const Footer = () => {
 };
 
 // Helper Components
+const XIcon = ({ className }) => (
+  <svg
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+    className={className}
+    fill="currentColor"
+  >
+    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+  </svg>
+);
+
 const SocialLink = ({ href, icon: Icon }) => (
   <a
     href={href}
+    target="_blank"
+    rel="noopener noreferrer"
     className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:bg-white/10 hover:text-white hover:border-purple-500/50 transition-all duration-300"
   >
     <Icon className="w-4 h-4" />
@@ -113,8 +125,8 @@ const SocialLink = ({ href, icon: Icon }) => (
 
 const FooterLink = ({ to, children }) => (
   <li>
-    <Link 
-      to={to} 
+    <Link
+      to={to}
       className="text-gray-400 hover:text-white transition-colors text-sm"
     >
       {children}

@@ -11,6 +11,8 @@
   --color-neon-pink: #FF10F0;
   --color-neon-blue: #00D9FF;
   --color-neon-green: #10B981;
+  
+  --font-sans: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
 /* =====================================================
