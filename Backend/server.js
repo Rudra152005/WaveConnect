@@ -46,7 +46,8 @@ app.use(
     cors({
         origin: [
             "http://localhost:5173",
-            "https://wave-connect-flax.vercel.app"
+            "https://wave-connect-flax.vercel.app",
+            "https://wave-connect-5h1cq3cua-rudras-projects-1224ba52.vercel.app"
         ],
         credentials: true,
     })

@@ -34,7 +34,7 @@ const UserAvatar = ({ user, size = 'md', showOnline = false }) => {
     <div className="relative inline-block">
       {user?.avatar && !imageError ? (
         <img
-          src={user.avatar.startsWith('/uploads') ? `http://localhost:5000${user.avatar}` : user.avatar}
+          src={user.avatar.startsWith('/uploads') ? `${import.meta.env.VITE_API_URL || 'http://localhost:5000'}${user.avatar}` : user.avatar}
           alt={user.username}
           onError={() => setImageError(true)}
           className={`${sizes[size]} rounded-full object-cover border-2 border-neon-purple`}
@@ -46,7 +46,7 @@ const UserAvatar = ({ user, size = 'md', showOnline = false }) => {
           {getInitials(user?.username)}
         </div>
       )}
-      
+
       {showOnline && user?.isOnline && (
         <div className="absolute bottom-0 right-0 w-3 h-3 bg-neon-green rounded-full border-2 border-white dark:border-dark-bg" />
       )}
