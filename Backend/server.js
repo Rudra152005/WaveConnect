@@ -58,6 +58,11 @@ app.use('/api/users', userRoutes);
 app.use('/api/chats', chatRoutes);
 app.use('/api/messages', messageRoutes);
 
+// Basic root route for deployment health check
+app.get('/', (req, res) => {
+    res.send('API is running...');
+});
+
 // Health check route
 app.get('/api/health', (req, res) => {
     res.status(200).json({
