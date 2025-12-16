@@ -63,6 +63,9 @@ app.get('/', (req, res) => {
     res.send('API is running...');
 });
 
+// Handle favicon.ico to prevent 404 errors
+app.get('/favicon.ico', (req, res) => res.status(204).end());
+
 // Health check route
 app.get('/api/health', (req, res) => {
     res.status(200).json({
